@@ -7,7 +7,7 @@ type Props = {
     number: String
 }
 
-export default function Card({ image, name, text, number }: Props) {
+export default function Card({ image, name, number, text }: Props) {
     return (
         <div className='bg-white rounded-lg w-70 border-white border-1'>
             <img className="w-full h-64 object-cover rounded-lg" src={`${image}`} alt="image" />

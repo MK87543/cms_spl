@@ -7,11 +7,10 @@ type Props = {}
 
 type Person = {
     id: number;
-    firstname: string;
-    lastname: string;
-    phone: string;
+    Name: string;
+    Phone_Number: string;
     image: string;
-    gender: string;
+    Text: string;
 }
 
 
@@ -19,27 +18,46 @@ export default function Wrapper({ }: Props) {
 
     const [data, setData] = useState<Person[]>([])
 
+    /*
+        useEffect(() => {
+            fetch("https://fakerapi.it/api/v2/persons?_quantity=15")
+                .then(response => response.json())
+                .then(fdata => {
+                    console.log(fdata);
+                    if (fdata && fdata.data) {
+                        setData(fdata.data.map((item: any) => ({
+                            id: item.id,
+                            firstname: item.firstname,
+                            lastname: item.lastname,
+                            phone: item.phone,
+                            image: item.image,
+                            gender: item.gender
+                        })));
+                    }
+                })
+                .catch(err => console.log(err))
+    
+    
+        }, [0])
+    */
 
     useEffect(() => {
-        fetch("https://fakerapi.it/api/v2/persons?_quantity=15")
+        fetch("http://localhost:8055/items/People")
             .then(response => response.json())
             .then(fdata => {
                 console.log(fdata);
                 if (fdata && fdata.data) {
                     setData(fdata.data.map((item: any) => ({
                         id: item.id,
-                        firstname: item.firstname,
-                        lastname: item.lastname,
-                        phone: item.phone,
-                        image: item.image,
-                        gender: item.gender
+                        Name: item.Name,
+                        Phone_Number: item.Phone_Number,
+                        Text: item.Text,
+                        image: "http://localhost:8055/assets/" + item.image,
                     })));
                 }
             })
             .catch(err => console.log(err))
-
-
-    }, [0])
+    }, [])
 
 
 
@@ -52,10 +70,10 @@ export default function Wrapper({ }: Props) {
                     {data.map((person) => (
                         <Card
                             key={person.id}
-                            image={person.gender === "male" ? `https://randomuser.me/api/portraits/men/${person.id}.jpg` : `https://randomuser.me/api/portraits/women/${person.id}.jpg`}
-                            name={`${person.firstname} ${person.lastname}`}
-                            number={person.phone}
-                            text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. "
+                            image={person.image}
+                            name={`${person.Name}`}
+                            number={person.Phone_Number}
+                            text={person.Text}
                         />
                     ))}
 
