@@ -1,7 +1,11 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800;900&display=swap');
 
-body {
-  background-color: #2d2b03; 
-  margin: 0;
-  overflow-x: hidden; 
+@layer base {
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #2d2b03;
+    margin: 0;
+    overflow-x: hidden;
+  }
 }
