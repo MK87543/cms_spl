@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
+import { RealAPI } from '../api/RealAPI'
+import type { Person } from '../utils/types'
+import { FakeAPI } from './../api/FakeAPI';
+
+
 
 type Props = {}
 
-
-
-type Person = {
-    id: number;
-    Name: string;
-    Phone_Number: string;
-    image: string;
-    Text: string;
-}
 
 
 export default function Wrapper({ }: Props) {
@@ -20,43 +16,17 @@ export default function Wrapper({ }: Props) {
 
     /*
         useEffect(() => {
-            fetch("https://fakerapi.it/api/v2/persons?_quantity=15")
-                .then(response => response.json())
-                .then(fdata => {
-                    console.log(fdata);
-                    if (fdata && fdata.data) {
-                        setData(fdata.data.map((item: any) => ({
-                            id: item.id,
-                            firstname: item.firstname,
-                            lastname: item.lastname,
-                            phone: item.phone,
-                            image: item.image,
-                            gender: item.gender
-                        })));
-                    }
-                })
-                .catch(err => console.log(err))
-    
-    
+            
         }, [0])
     */
 
     useEffect(() => {
-        fetch("http://localhost:8055/items/People")
-            .then(response => response.json())
-            .then(fdata => {
-                console.log(fdata);
-                if (fdata && fdata.data) {
-                    setData(fdata.data.map((item: any) => ({
-                        id: item.id,
-                        Name: item.Name,
-                        Phone_Number: item.Phone_Number,
-                        Text: item.Text,
-                        image: "http://localhost:8055/assets/" + item.image,
-                    })));
-                }
-            })
-            .catch(err => console.log(err))
+        const loadData = async () => {
+            const api = new RealAPI();
+            const people: Person[] = await api.fetchPeople() ?? [];
+            setData(people);
+        };
+        loadData();
     }, [])
 
 
