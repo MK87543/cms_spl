@@ -6,3 +6,14 @@ directus/uploads/c7c9923b-3429-4802-b1b2-eb2b934044cb.jpg
 directus/uploads/feeebd6b-b24d-4aac-a050-324126e8c091__7809681e43a17c0d8ad77890c0e89a2f36978e77.avif
 directus/uploads/feeebd6b-b24d-4aac-a050-324126e8c091__f15aa4b815722867859d2a3fa46ab50834dfc8dc.avif
 directus/uploads/feeebd6b-b24d-4aac-a050-324126e8c091.jpg
+
+# Dependencies
+node_modules/
+
+# Build
+dist/
+build/
+
+# Env
+.env
+.env.local
