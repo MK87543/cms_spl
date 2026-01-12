@@ -4,4 +4,5 @@ export interface HotWheel {
     series: string;
     year: number;
     color: string;
+    imageUrl?: string;
 }
