@@ -15,7 +15,6 @@ export const Card: React.FC<CardProps> = ({ car, onDelete, onEdit }) => {
             <div style={{ fontSize: '0.9em' }}>
                 <p style={{ margin: '4px 0' }}><strong>Series:</strong> {car.series}</p>
                 <p style={{ margin: '4px 0' }}><strong>Year:</strong> {car.year}</p>
-                {/* <p style={{ margin: '4px 0' }}><strong>Color:</strong> {car.color}</p> */}
             </div>
             <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
                 <button

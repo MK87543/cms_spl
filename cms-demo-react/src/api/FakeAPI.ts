@@ -1,4 +1,6 @@
-export class FakeAPI {
+import type { PeopleAPI } from "./PeopleAPI";
+
+export class FakeAPI implements PeopleAPI {
     fetchPeople = async () => {
         const result = await fetch(
             "https://fakerapi.it/api/v2/persons?_quantity=15",

@@ -1,4 +1,6 @@
-export class RealAPI {
+import type { PeopleAPI } from "./PeopleAPI";
+
+export class RealAPI implements PeopleAPI {
     fetchPeople = async () => {
         const result = await fetch("http://localhost:8055/items/People");
         const resultJson = await result.json();

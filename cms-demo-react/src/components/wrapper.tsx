@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react'
 import Card from './Card'
-import { RealAPI } from '../api/RealAPI'
-import type { Person } from '../utils/types'
-import { FakeAPI } from './../api/FakeAPI';
+import usePeople from '../hooks/usePeople'
 
 
 
@@ -11,24 +8,7 @@ type Props = {}
 
 
 export default function Wrapper({ }: Props) {
-
-    const [data, setData] = useState<Person[]>([])
-
-    /*
-        useEffect(() => {
-            
-        }, [0])
-    */
-
-    useEffect(() => {
-        const loadData = async () => {
-            const api = new RealAPI();
-            const people: Person[] = await api.fetchPeople() ?? [];
-            setData(people);
-        };
-        loadData();
-    }, [])
-
+    const data = usePeople()
 
 
     return (
@@ -46,8 +26,6 @@ export default function Wrapper({ }: Props) {
                             text={person.Text}
                         />
                     ))}
-
-
                 </div>
             </div>
 
